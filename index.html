@@ -289,8 +289,8 @@ $('#f').onsubmit=async e=>{
     try{
       const r=await fetch(SB_URL+'/rest/v1/wishes',{method:'POST',headers:{...H,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({name:n,message:m})});
       if(r.ok){wall.unshift({n,m});drawWall();loadWall();}
-      else{alert('Wish could not be sent, try again.');return}
-    }catch(err){alert('Wish could not be sent, try again.');return}
+      else{alert('Error '+r.status+': '+(await r.text()));return}
+    }catch(err){alert('Network error: '+err.message);return}
   }else{
     wall.unshift({n,m});sv('tjp_wall',wall);drawWall();
   }
