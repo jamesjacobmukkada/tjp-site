@@ -268,7 +268,8 @@ $('#hr').oninput=meter;meter();
 const SB_URL='https://yrvnglqjjlqtwwcdordq.supabase.co/rest/v1/';
 const SB_KEY='sb_publishable_LHoRCLSLovnHgzsHsoLaew_jY0Z-Nur';
 const useSB=SB_URL.indexOf('http')===0;
-const H={apikey:SB_KEY,Authorization:'Bearer '+SB_KEY};
+const H={apikey:SB_KEY};
+if(SB_KEY.indexOf('eyJ')===0)H.Authorization='Bearer '+SB_KEY;
 let wall=ls('tjp_wall',[{n:'James',m:'Happy 30th, Leader! The Party salutes you. Janmadina aashamsakal, sakhave! Now pay for your own biriyani.'}]);
 function drawWall(){$('#wall').innerHTML=wall.map(w=>'<div class="note"><b>'+esc(w.n)+'</b><br>'+esc(w.m)+'</div>').join('')}
 async function loadWall(){
